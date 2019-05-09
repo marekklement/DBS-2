@@ -23,7 +23,7 @@ public class BookServiceImplTest extends TestCase {
 		} catch (Exception e){
 			ex = e;
 		}
-		assertNotNull(ex);
+		assertNull(ex);
 		Book book1Found = bookService.find(1L);
 		assertNotNull(book1Found);
 		assertEquals("Not same books", book.getTitle(), book1Found.getTitle());
