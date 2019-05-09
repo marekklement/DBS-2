@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns="http://java.sun.com/xml/ns/persistence"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
-                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-             version="2.0">
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
 
-    <persistence-unit name="DBS_Project_JPA">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+<persistence-unit name="DBS_Project_JPA" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>cz.marek.cvut.model.Worker</class>
         <class>cz.marek.cvut.model.Librarian</class>
         <class>cz.marek.cvut.model.Library</class>
@@ -14,16 +14,17 @@
         <class>cz.marek.cvut.model.Book</class>
         <class>cz.marek.cvut.model.DVD</class>
         <class>cz.marek.cvut.model.Piece</class>
-        <properties>
+    <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://slon.felk.cvut.cz:5432/db19_klemema4"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="db19_klemema4"/>
             <property name="javax.persistence.jdbc.password" value="marousek"/>
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="eclipselink.cache.shared.default" value="false"/>
             <!--<property name="eclipselink.query-results-cache" value="false"/>-->
             <!--<property name="eclipselink.refresh" value="true" />-->
             <property name="eclipselink.target-database" value="PostgreSQL"/>
+            <property name="connection.pool_size" value="20"/>
         </properties>
     </persistence-unit>
 </persistence>

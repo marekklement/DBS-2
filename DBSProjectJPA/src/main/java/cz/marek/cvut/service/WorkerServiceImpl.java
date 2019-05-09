@@ -6,6 +6,7 @@ import cz.marek.cvut.dao.WorkerDAO;
 import cz.marek.cvut.dao.WorkerDAOImpl;
 import cz.marek.cvut.model.Worker;
 
+
 public class WorkerServiceImpl implements WorkerService {
 
 	private WorkerDAO workerDAO;

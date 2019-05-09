@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,7 +47,9 @@ abstract class GenericDAO<T> implements DAO<T> {
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
-		em.flush();
+		if(em.getTransaction().isActive()) {
+			em.flush();
+		}
 		return entity;
 	}
 

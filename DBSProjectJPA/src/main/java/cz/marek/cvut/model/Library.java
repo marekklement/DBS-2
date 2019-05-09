@@ -40,7 +40,7 @@ public class Library {
 	@Column(name = "POSTAL_CODE")
 	private int postalCode;
 
-	@Column(name = "PIECES")
+	@JoinColumn(name = "PIECES")
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "library")
 	private List<Piece> pieces;
 

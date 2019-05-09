@@ -1,7 +1,5 @@
 package cz.marek.cvut.service;
 
-import javax.inject.Inject;
-
 import org.junit.Test;
 
 import cz.marek.cvut.model.Book;
@@ -9,7 +7,6 @@ import junit.framework.TestCase;
 
 public class BookServiceImplTest extends TestCase {
 
-	@Inject
 	private BookService bookService;
 
 	@Test
@@ -20,6 +17,15 @@ public class BookServiceImplTest extends TestCase {
 		book.setSerialNumber("123NN");
 		book.setYear(1999);
 		bookService = new BookServiceImpl();
-		bookService.createNewBook(book);
+		Exception ex = null;
+		try {
+			bookService.createNewBook(book);
+		} catch (Exception e){
+			ex = e;
+		}
+		assertNotNull(ex);
+		Book book1Found = bookService.find(1L);
+		assertNotNull(book1Found);
+		assertEquals("Not same books", book.getTitle(), book1Found.getTitle());
 	}
 }
